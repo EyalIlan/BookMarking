@@ -1,4 +1,6 @@
 
+const BookMark = require('../models/bookmark')
+
 
 const GetAllUrl = async (req,res) =>{
 
@@ -27,12 +29,19 @@ const GetSingleUrl = async (req,res) =>{
 
 const AddNewUrl = async (req,res) =>{
 
+    const {name,url,category} = req.body
     try{
-    
+        const bookmark = new BookMark({
+            name,
+            url,
+            category
+        })
+        await bookmark.save();
     }
     catch(e){
-
+        return e
     }
+    res.status(200).send("save to database")
 }
 
 const UpdateAllUrls = async (req,res) =>{

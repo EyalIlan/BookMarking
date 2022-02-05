@@ -20,6 +20,6 @@ const BookMarkSchema = mongoose.Schema({
 
 })
 
-const BookMark = mongoose.model('bookmark',BookMark)
+const BookMark = mongoose.model('bookmark',BookMarkSchema)
 
 module.exports = BookMark
