@@ -1,33 +1,22 @@
 
 const express = require('express')
-
-const router = express.Router()
-///////
-
-router.get('/',(req,res)=>{
-
-})
-
-
-
-const express = require("express")
+const BookMarkController = require('../controllers/bookmark')
 
 const router = express.Router()
 
+router.get("/",BookMarkController.GetAllUrl)
 
-router.get(GetAllUrl,"/")
+router.get("/geturl:url",BookMarkController.GetSingleUrl)
 
-router.get(GetSingleUrl,"/geturl:url")
+router.post('/addurl',BookMarkController.AddNewUrl)
 
-router.put(UpdateAllUrls,"/updateAll")
+router.put("/updateAll",BookMarkController.UpdateAllUrls)
 
-router.put(UpdateUrl,"/update/:id")
+router.put("/update/:id",BookMarkController.UpdateUrl)
 
+router.delete("/deleteAll",BookMarkController.DeleteALLUrls)
 
-router.delete(DeleteALLUrls,"/deleteAll")
-
-router.delete(DeleteUrl,"/delete/:id")
-
+router.delete("/delete/:id",BookMarkController.DeleteUrl)
 
 
 module.exports = router
