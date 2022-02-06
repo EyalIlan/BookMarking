@@ -6,23 +6,27 @@ const GetAllUrl = async (req,res) =>{
 
     try{
 
-
+        const responce = await BookMark.find({})
+        res.json(responce)
 
     }
     catch(e){
+
+        res.json("Cant get URLS")
 
     }
 }
 
 const GetSingleUrl = async (req,res) =>{
-
+    
+    const {name} = req.body
+    console.log("get single ", name);
     try{
-
-
-
+        const responce = await BookMark.find({name:name})
+        res.json(responce)
     }
     catch(e){
-
+        res.json("Cant get Url")
     }
 }
 
@@ -37,22 +41,21 @@ const AddNewUrl = async (req,res) =>{
             category
         })
         await bookmark.save();
+        res.json("Book Mark Saved")
     }
     catch(e){
-        return e
+        res.json("Cant save Url")
     }
-    res.status(200).send("save to database")
 }
 
 const UpdateAllUrls = async (req,res) =>{
 
     try{
 
-
-
+     
     }
     catch(e){
-
+        
     }
 }
 

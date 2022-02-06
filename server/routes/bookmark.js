@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get("/",BookMarkController.GetAllUrl)
 
-router.get("/geturl:url",BookMarkController.GetSingleUrl)
+router.get("/geturl",BookMarkController.GetSingleUrl)
 
 router.post('/addurl',BookMarkController.AddNewUrl)
 
