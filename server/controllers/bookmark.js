@@ -3,24 +3,19 @@ const BookMark = require('../models/bookmark')
 
 
 const GetAllUrl = async (req,res) =>{
-
     try{
 
         const responce = await BookMark.find({})
         res.json(responce)
-
     }
     catch(e){
-
         res.json("Cant get URLS")
-
     }
 }
 
-const GetSingleUrl = async (req,res) =>{
-    
+
+const GetSingleUrl = async (req,res) =>{   
     const {name} = req.body
-    console.log("get single ", name);
     try{
         const responce = await BookMark.find({name:name})
         res.json(responce)
@@ -32,7 +27,6 @@ const GetSingleUrl = async (req,res) =>{
 
 
 const AddNewUrl = async (req,res) =>{
-
     const {name,url,category} = req.body
     try{
         const bookmark = new BookMark({
@@ -50,24 +44,27 @@ const AddNewUrl = async (req,res) =>{
 
 const UpdateAllUrls = async (req,res) =>{
 
+    const {category} = req.body
+    console.log("IN Update All");
     try{
-
-     
+        const responce = await BookMark.updateMany({ category:category },{ category:"ANIME"})
+        res.json("Update Success")
     }
     catch(e){
-        
+        console.log(e);
+        res.json("Cant update")
     }
 }
 
 const UpdateUrl = async (req,res) =>{
 
+    const {id} = req.params
     try{
-
-
-
+        const responce = await BookMark.updateOne({id},req.body)
+        res.json(responce)
     }
     catch(e){
-
+        res.json(e)
     }
 }
 
