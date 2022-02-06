@@ -70,26 +70,30 @@ const UpdateUrl = async (req,res) =>{
 
 const DeleteALLUrls = async (req,res) =>{
 
+    const {category} = req.body
     try{
-
-
-
+        const responce = await BookMark.deleteMany({category})
+        res.json("delete category success")
     }
     catch(e){
-
+        console.log(e);
+        res.json("Could not delete category")
     }
 }
 
 
 const DeleteUrl = async (req,res) =>{
 
+    const {id} = req.params
+    console.log("IN delete one");
     try{
-
-
-
+        const responce = await BookMark.deleteOne({id})
+        res.json(responce)
+        console.log("delete success");
     }
     catch(e){
-
+        console.log(e);
+        res.json(e)
     }
 }
 
